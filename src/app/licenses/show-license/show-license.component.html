@@ -1,0 +1,176 @@
+<button [routerLink]="['/licenses']" class="back-btn d-flex align-items-center justify-content-center"><i class="fa-solid fa-arrow-left me-3 mt-1 "></i>رجوع</button>
+
+<div class="container">
+  <mat-stepper class="mt-5" linear #stepper dir="rtl">
+    <mat-step [stepControl]="firstFormGroup" [editable]=true>
+      <ng-template matStepLabel>معلومات الفرع</ng-template>
+
+      <fieldset dir="rtl" class="mt-4 mx-auto fieldset-border" id="">
+        <legend class="float-none w-auto ms-2" tabIndex="0" (click)="colapse('contractInfo')">
+          تعريف الفرع
+        </legend>
+        <span (click)="colapse('contractInfo')" class="legend2"><i  [@smoothCollapse]="isCollapsed.contractInfo? 'initialArrow':'invertedArrow'" class="fa-solid fa-caret-down ms-1" style="opacity: 0.5; padding-bottom: 5px;"></i></span>
+    
+        <div id="contractInfo" [@smoothCollapse]="isCollapsed.contractInfo?'initial':'final'">
+            <div>
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>كود التشغيل</mat-label>
+                <input (keyup)="checkCode()" [disabled]="!editState" [(ngModel)]="currentBranch.store_code"  required="true" dir="rtl" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" #input  maxlength="6" matInput>
+              </mat-form-field>
+              <div *ngIf="errorStoreCodeFlag">
+                <p class="text-danger">* هذا الكود يوجد بالفعل، يرجى المراجعة</p>
+              </div>
+            </div>
+    
+            <mat-form-field id="SAP" appearance="outline">
+              <mat-label> كود الساب</mat-label>
+              <input dir="rtl" [disabled]="!editState" [(ngModel)]="currentBranch.sap_code"  type="text" #SAP  maxlength="8" matInput>
+            </mat-form-field>
+
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <mat-label>المحافظة</mat-label>
+              <mat-select [disabled]="!editState" dir="rtl" [(ngModel)]="currentBranch.governorate" class="ms-auto" placeholder="المحافظة" required="true" disableOptionCentering panelClass="myPanelClass">
+                  <mat-option style="margin-left: 15px" *ngFor="let gov of constants.governorates"  [value]="gov">
+                      {{ gov }}
+                  </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field style="width: 100%;"  appearance="outline">
+              <mat-label>الإقليم</mat-label>
+      
+              <mat-select [disabled]="!editState" dir="rtl" [(ngModel)]="currentBranch.province" placeholder="الإقليم" required="true" disableOptionCentering panelClass="myPanelClass">
+                  <mat-option *ngFor="let area of constants.areas" [value]="area">
+                      {{ area }}
+                  </mat-option>
+      
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field id="address" appearance="outline">
+              <mat-label>العنوان</mat-label>
+              <input [disabled]="!editState" dir="rtl" type="text" [(ngModel)]="currentBranch.branch_address"  #address  maxlength="150" matInput required="true">
+            </mat-form-field>
+
+            <mat-form-field id="address" appearance="outline">
+            <mat-label>موقف الفرع</mat-label>
+            <mat-select id="status" [disabled]="!editState" [(ngModel)]="currentBranch.status"  [ngClass]="className"  dir="rtl" disableOptionCentering panelClass="myPanelClass">
+              <mat-option *ngFor="let state of constants.states"   [value]="state.name">
+                  {{ state.name }}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+          </div>
+      </fieldset>
+
+      <fieldset  dir="rtl"  class="mt-4 mx-auto fieldset-border">
+        <legend class="float-none w-auto " tabIndex="0" (click)="colapse('branchInfo')">
+        موافقات خارجية
+        </legend>
+        <span (click)="colapse('branchInfo')" class="legend2"><i  [@smoothCollapse]="isCollapsed.branchInfo? 'initialArrow':'invertedArrow'" class="fa-solid fa-caret-down ms-1" style="opacity: 0.5; padding-bottom: 5px;"></i></span>
+        <div id="branchInfo" [@smoothCollapse]="isCollapsed.branchInfo?'initial':'final'">
+    
+            <mat-form-field appearance="outline">
+              <mat-label>تاريخ الموافقة</mat-label>
+              <input [disabled]="!editState" [(ngModel)]="currentBranch.valid_through"  dir="rtl" #branch  maxlength="150" matInput [matDatepicker]="active" readonly (focus)="active.open()">
+              <mat-datepicker-toggle matSuffix [for]="active"></mat-datepicker-toggle>
+              <mat-datepicker #active></mat-datepicker>
+              <mat-hint align="end">يوم/شهر/سنة</mat-hint>
+            </mat-form-field>  
+
+            <mat-form-field appearance="outline">
+              <mat-label>تاريخ التجديد</mat-label>
+              <input [disabled]="!editState" [(ngModel)]="currentBranch.renewal_date"  dir="rtl" #branch  maxlength="150" matInput [matDatepicker]="end" (focus)="end.open()">
+              <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+              <mat-datepicker #end></mat-datepicker>
+              <mat-hint align="end">يوم/شهر/سنة</mat-hint>
+            </mat-form-field>    
+        </div>
+      </fieldset>
+ 
+      <fieldset  dir="rtl"  id="attachments" class="mt-4 mx-auto fieldset-border m b-4">
+        <legend class="float-none w-auto " tabIndex="0" (click)="colapse('attachments')">
+        الملحقات
+        </legend>
+        <span (click)="colapse('attachments')" class="legend2"><i  [@smoothCollapse]="isCollapsed.attachments? 'initialArrow':'invertedArrow'" class="fa-solid fa-caret-down ms-1" style="opacity: 0.5; padding-bottom: 5px;"></i></span>
+      
+        <div [@smoothCollapse]="isCollapsed.attachments?'initial':'final'">
+      
+          <app-upload [disabled]="!editState" #upload></app-upload>
+          <button *ngIf="currentBranch.has_attachment" class="download-btn"><a [href]="download_url">تحميل الملفات</a></button>
+      
+          <div *ngIf="!currentBranch.has_attachment && !editState">
+            <p id="paragraph" dir="rtl">* هذا العقد ليس لديه أية مرفقات</p>
+          </div>
+        </div>
+      </fieldset>
+      
+      <div style="display: flex; align-items: center; justify-content: center; margin-top: 30px;">
+        <button mat-raised-button class="m-auto" color="primary"  class="next-button" mat-button matStepperNext>التالي</button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [editable]=true>
+      <ng-template matStepLabel>تراخيص التشغيل</ng-template>
+      <fieldset  dir="rtl"  id="attachments" class="mt-4 mx-auto fieldset-border m b-4">
+        <legend class="float-none w-auto " tabIndex="0" (click)="colapse('attachments')">
+        بيانات الترخيص
+        </legend>
+
+        <span (click)="colapse('attachments')" class="legend2"><i  [@smoothCollapse]="isCollapsed.attachments? 'initialArrow':'invertedArrow'" class="fa-solid fa-caret-down ms-1" style="opacity: 0.5; padding-bottom: 5px;"></i></span>
+      
+        <div [@smoothCollapse]="isCollapsed.attachments?'initial':'final'">
+          <mat-form-field appearance="outline">
+            <mat-label>تاريخ التجديد</mat-label>
+            <input dir="rtl" formControlName="renewal_date" matInput [matDatepicker]="end" readonly (focus)="end.open()" placeholder="الانتهاء">
+            <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+            <mat-datepicker #end></mat-datepicker>
+            <mat-hint align="end">يوم/شهر/سنة</mat-hint>
+          </mat-form-field>
+        </div>
+      </fieldset>
+      <div style="display: flex; align-items: center; justify-content: center; margin-top: 30px;">
+        <button mat-raised-button class="back-button" style="margin-left: 20px;" mat-button matStepperPrevious>السابق</button>
+      <button mat-raised-button class="next-button" mat-button matStepperNext>التالي</button>
+    </div>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [editable]=true>
+      <ng-template matStepLabel>تراخيص الاعلانات</ng-template>
+      <fieldset  dir="rtl"  id="attachments" class="mt-4 mx-auto fieldset-border m b-4">
+        <legend class="float-none w-auto " tabIndex="0" (click)="colapse('attachments')">
+        بيانات الترخيص
+        </legend>
+        <span (click)="colapse('attachments')" class="legend2"><i  [@smoothCollapse]="isCollapsed.attachments? 'initialArrow':'invertedArrow'" class="fa-solid fa-caret-down ms-1" style="opacity: 0.5; padding-bottom: 5px;"></i></span>
+      
+        <div [@smoothCollapse]="isCollapsed.attachments?'initial':'final'">
+      
+          <mat-form-field appearance="outline">
+            <mat-label>تاريخ التجديد</mat-label>
+            <input dir="rtl" formControlName="renewal_date" matInput [matDatepicker]="end" readonly (focus)="end.open()" placeholder="الانتهاء">
+            <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+            <mat-datepicker #end></mat-datepicker>
+            <mat-hint align="end">يوم/شهر/سنة</mat-hint>
+          </mat-form-field>
+
+          
+        </div>
+      </fieldset>
+      <div style="display: flex; align-items: center; justify-content: center; margin-top: 30px;">
+        <button mat-raised-button class="back-button" style="margin-left: 20px;" mat-button matStepperPrevious>السابق</button>
+      <button mat-raised-button class="next-button" mat-button matStepperNext>التالي</button>
+    </div>
+    </mat-step>
+  </mat-stepper>
+</div>
+
+<div class="editBtnsContainer d-flex justify-content-between mx-auto ">
+    <button *ngIf="!editState" class="py-2 mb-4" id="edit" (click)="edit()">تعديل</button>
+    <div class="w-75">
+  
+      <button *ngIf="editState" type="submit" class="py-2 mb-4" [disabled]="errorStoreCodeFlag || currentBranch.branch_address=='' || currentBranch.store_code == null " id="save" (click)="save(upload.filesSelected)">حفظ</button>
+      <button *ngIf="editState" class=" py-2 mb-4" id="cancel" (click)="cancel()">تجاهل</button>
+  
+    </div>
+</div>
+  

@@ -1,0 +1,113 @@
+
+
+
+table {
+    width: 100%;
+    margin-top: 2%;
+    table-layout: fixed;
+    background-color: #fff;
+  }
+
+  th,h2{
+    color: #173156 !important;
+    font-weight: bold;
+    font-family: 'Almarai' !important;
+  }
+
+.add-btn{
+  background-color: #173156;
+  padding: 12px 0px ;
+  color: white;
+  font-weight: 700;
+  box-shadow: none;
+}  
+
+.mat-cell,.mat-header-cell{
+  border: none !important;
+  height: 75px;
+} 
+
+.mat-cell{
+  color: black;
+  font-family: 'Almarai' !important;
+
+}
+
+
+.alternate{
+  background-color: rgba(217, 217, 217,0.4);
+}
+
+
+.reassign-btn{
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  color: #173156 ;
+  border-color: #173156 ;
+
+}
+
+.reassign-btn:hover{
+  color: #fff;
+  background-color: #173156;
+}
+
+.mat-cell, .mat-header-cell{
+  text-align: center !important;
+}
+
+i{
+color: rgba(0, 0, 0,0.5);
+cursor: pointer;
+}
+
+
+.btn:focus{
+  box-shadow: none;
+ 
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background{
+background-color: #173156 !important;
+border: 0px !important;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border-color: #686666;
+}
+
+::ng-deep .mat-checkbox-input {
+  display: none;
+}
+
+::ng-deep .mat-checkbox-checkmark-path{
+  stroke: white !important;
+}
+
+::ng-deep .mat-checkbox-mixedmark{
+  color: white !important;
+}
+
+
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+
+.adduser-btn:hover{
+  background-color: #173156;
+}
+
+.adduser-btn:hover i{
+    color: white !important;
+}
+
+.adduser-btn:focus{
+  box-shadow: none;
+}
+

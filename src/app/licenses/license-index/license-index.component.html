@@ -1,0 +1,70 @@
+<div dir="rtl" >
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input matInput placeholder="البحث عن فرع" #search (keyup)="findByCode(search)">
+        </mat-form-field>
+</div>
+
+
+
+<div class="table" id="style-1">
+  <table #table mat-table [dataSource]="dataSource" dir="rtl" >
+         <!-- id Column -->
+         <ng-container matColumnDef="#">
+          <th mat-header-cell *matHeaderCellDef> # </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}}
+          </td>
+        </ng-container>
+      
+    
+        <!-- sap Column -->
+        <ng-container matColumnDef="sap">
+          <th mat-header-cell *matHeaderCellDef>   الكود (الساب)</th>
+          <td mat-cell *matCellDef="let element"> {{element.sap}} </td>
+        </ng-container>
+      
+
+        <!-- code Column -->
+        <ng-container matColumnDef="code"  class="text-center" >
+          <th mat-header-cell *matHeaderCellDef class="w-25"> الكود (التشغيل) </th>
+          <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+        </ng-container>
+      
+
+        <!-- address Column -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef> العنوان </th>
+          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+    
+
+        <!-- governorate Column -->
+        <ng-container matColumnDef="governorate">
+          <th mat-header-cell *matHeaderCellDef> المحافظه </th>
+          <td mat-cell *matCellDef="let element"> {{element.governorate}} </td>
+        </ng-container>
+    
+
+        <!-- region Column -->
+        <ng-container matColumnDef="region">
+          <th mat-header-cell *matHeaderCellDef> الاقليم </th>
+          <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+        </ng-container>
+      
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> موقف الفرع </th>
+          <td mat-cell *matCellDef="let element"> 
+              <div class="state" [ngClass]="{greenClass: element.status=='صادر له RR', redClass: element.status=='معلق',orangeClass: element.status=='صادر له رخصة', blueClass: element.status=='لم يقدم'}">{{element.status}}</div>
+          </td>
+        </ng-container>
+      
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr (click)="display(row.id)" mat-row *matRowDef="let row; columns: displayedColumns;  let index = index;" [ngClass]="{alternate: index % 2 == 0 }"
+        (click)="selection.toggle(row)" >
+        </tr>
+  </table>  
+</div>
+
+<button [routerLink]="['add']" class="btn m-5 mt-4 px-4 addBtn ">اضافة فرع</button>

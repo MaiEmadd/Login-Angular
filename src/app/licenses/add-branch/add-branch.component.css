@@ -1,0 +1,266 @@
+.grid-container {
+    display: grid;
+    grid-gap: 20px;;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    padding: 40px;
+    margin: auto;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    grid-row-gap: 30px;;
+  }
+  
+  mat-stepper {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  mat-step-header:hover {
+    background-color: white;
+  }
+  
+  .state{
+    width: 132px;
+    height: 33px;
+    color: white;
+    margin: auto;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    filter: drop-shadow(0px 4px 4px rgba(203, 203, 203, 0.45));
+  }
+  
+  .greenClass{
+    background-color: #01C165;
+  }
+  .redClass{
+    background-color: #AE0C00;
+  }
+  .orangeClass{
+    background-color: #F76000;
+  }
+  .blueClass{
+    background-color: #173156;
+  }
+  
+  .next-button {
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
+    border: 1px solid #173156;
+    transition: 0.3s ease-in-out;
+    float: left;
+  }
+  
+  .back-button {
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
+    border: 1px solid rgb(50, 173, 50);
+    transition: 0.3s ease-in-out;
+    float: right;
+  }
+  
+  .back-button:hover {
+    background-color: rgb(50, 173, 50);
+    color:white;
+  }
+  
+  .next-button:hover {
+    background-color: #173156;
+    color: white;
+  }
+  
+  .back-btn {
+    border: 1px solid #173156;
+    margin-top: 40px;
+    float: left;
+    background-color: white;
+    color: black;
+    margin-left: 50px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    padding-bottom: 9px;
+    font-weight: 900;
+    font-size: 20px;
+    transition: 0.3s ease-in;
+  }
+  
+  .back-btn:hover {
+    background-color: #173156;
+    color: white;
+  
+  }
+  
+  
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
+    color: rgba(0,0,0,0.3) !important;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgba(0,0,0,0.3) !important;
+  }
+  
+  
+  
+  ::ng-deep .mat-form-field-label {
+    color: black  !important;
+    font-size: 18px !important;
+    font-weight: 900;
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-label {
+    font-weight: bolder;
+  }
+  
+  ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label, .mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    top: 1.6em !important;
+    padding-left: 2px;
+    background-color: white;
+    width: fit-content;
+    font-size: 22px !important;
+  }
+  
+  ::ng-deep .mat-form-field-label-wrapper {
+    overflow:unset !important;
+  
+  }
+
+  .mat-stepper-horizontal, .mat-stepper-vertical {
+    background-color: #fff;
+}
+  
+
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #173156;
+  color: #fff;
+}
+
+::ng-deep .mat-step-header .mat-step-label.mat-step-label-active {
+  color: #173156;
+}
+
+::ng-deep .mat-step-header .mat-step-label, .mat-step-header .mat-step-optional {
+  color:#173156;
+}
+
+
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: #173156;
+  color: #fff;
+}
+
+
+
+::ng-deep .mat-stepper-horizontal-line {
+  border-top-color: #5d89c7 !important;
+}
+
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #173156;
+}
+
+::ng-deep .mat-option {
+  color: #173156;
+}
+
+::ng-deep .mat-select-panel {
+  background: #eceef0;
+  margin-top: 25px;
+}
+
+::ng-deep .mat-select-arrow {
+  color: rgb(0 0 0 / 70%);
+}
+
+::ng-deep .mat-select-value {
+  color: #173156;
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: #173156;
+}
+
+::ng-deep .mat-option.mat-active {
+  background: rgba(255,255,255,.04);
+  color: #173156;
+}
+
+mat-stepper{
+  margin-top: 100px !important;
+}
+
+.mat-datepicker-toggle-active {
+  color: #173156;
+}
+::ng-deep .mat-datepicker-content {
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  background-color: #fff;
+  /* color: #173156 !important; */
+}
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #173156;
+  color: #fff;
+}
+
+::ng-deep .mat-datepicker-toggle {
+  color: #173156;
+}
+
+:ng-deep .mat-calendar-body-cell-content, .mat-date-range-input-separator {
+  color: #173156;
+  border-color: rgba(0,0,0,0);
+}
+
+::ng-deep .mat-calendar-body-cell-content, .mat-date-range-input-separator {
+  color: #173156;
+  border-color: rgba(0,0,0,0);
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-next-button{
+  color: #173156;
+}
+
+::ng-deep .mat-datepicker-content .mat-calendar-previous-button{
+  color: #173156;
+
+}
+
+::ng-deep .mat-datepicker-content {
+  box-shadow: 0px 2px 4px -1pxrgba(0, 0, 0, 0.2),0px 4px 5px 0pxrgba(0, 0, 0, 0.14),0px 1px 10px 0pxrgba(0, 0, 0, 0.12);
+  color: #173156;
+}
+
+::ng-deep .mat-calendar-arrow {
+  fill: #173156;
+}
+::ng-deep .mat-calendar-table-header, .mat-calendar-body-label {
+  color: #173156;
+}
+
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #173156;
+  color: #fff !important;
+}
+
+.saveBtn{
+  background-color: #01C165;
+  color: white;
+}
+
+.saveBtn:hover{
+  background-color: #4ab883;
+  color: white;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #173156 !important;
+  font-size: 18px !important;
+  font-weight: 900;
+}

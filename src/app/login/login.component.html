@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-6 d-flex align-items-center justify-content-center position-relative">
+            <div class="w-75 text-center form">
+                <img src="../../assets/Images/Vector.png" class="left-img" >
+                <img src="../../assets/Images/Vector (1).png" class="right-img" >
+                <img src="../../assets/Images/Kazyon Plus Logo 1.svg" class="logo mb-5" >
+
+                <div class="login-title mb-3 mt-3">
+                    <h5>تسجيل الدخول</h5>
+                    <p>برجاء ادخال الايميل وكلمة السر</p>
+                </div>
+                
+                <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm(loginForm)">
+
+                    <div class="mb-4">
+                        <input formControlName="email" placeholder="البريد الالكتروني  &#xf0e0;" style="font-family:Almarai, FontAwesome;" class="form-control" type="email" id="email">
+                        <div *ngIf="loginForm.get('email')?.errors != null && loginForm.get('email')?.touched" class="alert d-flex justify-content-end ">
+                            
+                            <p *ngIf="loginForm.get('email')?.errors?.['required']">
+                                برجاء ادخال الايميل <i class="fa-solid fa-triangle-exclamation"></i></p>
+                            <p *ngIf="loginForm.get('email')?.errors?.['email']">الايميل غير صحيح
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </p>
+                       </div>
+                    </div>
+            
+                    <div class="mb-4">
+                        <input formControlName="password" placeholder="كلمة السر  &#xf3c1;" style="font-family:Almarai, FontAwesome" class="form-control" type="password" name="" id="password">
+                        <div *ngIf="loginForm.get('password')?.errors != null && loginForm.get('password')?.touched" class="alert">
+                            <p *ngIf="loginForm.get('password')?.errors?.['required']">برجاء ادخال كلمة السر
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </p>
+                       </div>
+                    </div>
+
+                    <!-- <a href="#" class="pass-remember">نسيت كلمة السر؟</a> -->
+
+                    <div *ngIf="error" class="alert">
+                        <p>{{error}}</p>
+                    </div>
+            
+                    <button [disabled]="loginForm.invalid" type="submit" class="btn mt-3 text-white">تسجيل الدخول</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6 animation d-flex align-items-center justify-content-center">
+                <img src="../../assets/Images/team success.png" class="img-fluid" alt="">
+        </div>
+
+    </div>
+</div>

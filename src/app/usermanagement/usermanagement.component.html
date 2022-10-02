@@ -1,0 +1,88 @@
+<div class="d-flex align-items-baseline justify-content-between">
+  <button class="btn btn-outline-secondary ms-5 adduser-btn " (click)="openDialog('اضافه',{})">
+    <i class="fa-solid fa-plus text-dark"></i>
+  </button>
+  <div>
+    <h2 class="m-5 mb-3 fw-bold fs-3" dir="rtl">المستخدمين</h2>
+  </div>
+</div>
+
+
+<hr/>
+
+<table #table mat-table [dataSource]="dataSource" dir="rtl">
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? toggleAllRows() : null"
+      [checked]="selection.hasValue() && isAllSelected()"
+      [indeterminate]="selection.hasValue() && !isAllSelected()"
+      [aria-label]="checkboxLabel()">
+    </mat-checkbox>
+  </th>
+  <td mat-cell *matCellDef="let row">
+    <mat-checkbox (click)="$event.stopPropagation()"
+    (change)="$event ? selection.toggle(row) : null"
+    [checked]="selection.isSelected(row)"
+    [aria-label]="checkboxLabel(row)">
+  </mat-checkbox>
+</td>
+</ng-container>
+
+
+    <!-- id Column -->
+    <ng-container matColumnDef="#">
+      <th mat-header-cell *matHeaderCellDef> # </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}}
+      </td>
+    </ng-container>
+  
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> الاسم </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- email Column -->
+    <ng-container matColumnDef="email" >
+      <th mat-header-cell *matHeaderCellDef class="w-25"> البريد الالكتروني </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <!-- permissions Column -->
+    <ng-container matColumnDef="permissions">
+      <th mat-header-cell *matHeaderCellDef> الصلاحيات </th>
+      <td mat-cell *matCellDef="let element"> {{element.permissions}} </td>
+    </ng-container>
+
+    <!-- department Column -->
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef> القسم </th>
+      <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+    </ng-container>
+
+    <!-- password Column -->
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef> كلمة المرور </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button class="btn btn-outline-success reassign-btn" (click)="openReassignDialog('تعيين',element)">اعادة تعيين</button>  
+      </td>
+    </ng-container>
+  
+    <!-- details Column -->
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> تعديل </th>
+      <td mat-cell *matCellDef="let element">
+        <button class="btn" (click)="openDialog('تعديل',element)">
+         <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        </td>
+    </ng-container>
+  
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;  let index = index;" [ngClass]="{alternate: index % 2 == 0 }"
+    (click)="selection.toggle(row)" >
+    </tr>
+</table>  

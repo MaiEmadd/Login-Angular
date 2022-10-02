@@ -1,0 +1,77 @@
+.animation{
+    background-color: #173156;
+}
+
+.animation img{
+    width: 60%;
+}
+
+.container-fluid,.row{
+    height: 100%;
+}
+
+button{
+    background: #F76000;
+    border-radius: 10px;
+    width: 300px;
+    height: 50px;
+    font-weight: 700;
+}
+
+input{ 
+    background: rgba(156, 156, 156, 0.2);
+    border: 1px solid #9C9C9C; border-radius: 5px;
+    height: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+.left-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.right-img{
+    position: absolute;
+    top: 0;
+    right: 0px;
+}
+h5{
+    color: #173156;
+}
+
+a,p{
+    color:#6F6F6F;
+}
+
+.login-title,.alert, input::placeholder, .pass-remember{
+    text-align: end;
+}
+
+h5,a,p{
+    font-size: 17px !important;
+    font-family: 'Almarai';
+}
+
+input::placeholder{
+    color: rgba(0, 0, 0, 0.3);
+    padding: 10px 0;
+}
+
+.pass-remember{
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.alert p{
+    margin-top: 3px;
+    font-size: 15px !important;
+    color: rgb(192, 13, 13) !important;
+    margin-bottom: 0 !important;
+}
